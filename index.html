@@ -14,23 +14,23 @@
   <link id='wireframecss' type="text/css" rel="stylesheet" href="wireframe.css" />
   <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
   <link id='testcss' type="text/css" rel="stylesheet" href="testing.css">
-  
+
   <!-- Places an icon in the tab, feel free to create your own! -->
-  <link rel="icon" href="/~e54061/img/TrevBottleBrushIcon.png" type="image/x-icon">
+  <link rel="icon" href="/~S3807720/media/avatar.png" type="image/x-icon">
 
   <!-- Javascript, you can have more than one. -->
   <script src='wireframe.js'></script>
-
-  <div id='header'>
-    <!-- Image sourced from www.rmit.edu.au for educational purposes only -->
-    <div><img src='../media/RMIT-Logo.png' alt='RMIT University logo' height=80 />Insert Your Name Here</div>
-  </div>
-
 </head>
+
 
 <body>
 
-  <div id='nav'>
+  <header>
+    <!-- Image sourced from www.rmit.edu.au for educational purposes only -->
+    <img src='../media/RMIT-Logo.png' alt='RMIT University logo' height=80 />Luke Smith
+  </header>
+
+  <nav>
     Assignments:
     <!-- link locations: relative to current directory -->
     <ul>
@@ -43,55 +43,53 @@
     <a href="/~e54061/secure" target="_blank">Secure Resources Area</a> |
     <!-- link location: external -->
     <a href='https://drive.google.com/open?id=1uSRn6PHDcpsUtmFQ6MPMM-g2go4o22VP' target="_blank">Course Materials</a>
-  </div>
+  </nav>
 
-  <div id='main'>
+  <main>
     <article id='about-me'>
       <h2>About me</h2>
       <p>
-        <img src='../media/avatar.png' width='200' alt='my photo' />
+        <!-- ../media/ -->
+        <img src='avatar.png' width='200' alt='my photo' />
       </p>
-      <section id="more-about-me">
-        
+      <details>
+        <summary> Click me to reveal the super interesting details about me!</summary>
         <h3>Who is your tutor / instructor</h3>
-        <div>_</div>
+        <aside>Trevor</aside>
 
         <h3>Who is your labber / workshopper</h3>
-        <div>_</div>
+        <aside>Srikanth</aside>
 
         <h3>Have you any programming or web design experience?</h3>
-        <div>_</div>
+        <aside>I have experience with Java, C, HTML and CSS.</aside>
 
         <h3>Do you see yourself as a programmer, designer, or both?</h3>
-        <div>_</div>
+        <aside>Both, however not proficient at graphic design.</aside>
 
         <h3>What has brought you to this course at RMIT?</h3>
-        <div>_</div>
+        <aside>Web is fun! Though I prefer C. :(</aside>
 
         <h3>What are you hoping to get out of the course?</h3>
-        <div>_</div>
+        <aside>To get a certificate and start becoming a super programmer!</aside>
 
         <h3>What websites do you use the most?</h3>
-        <div>_ &larr; <i>NB: "family friendly"!</i></div>
+        <aside> Youtube, stackoverflow, discord.</aside>
 
         <h3>Do you have any interests or hobbies?</h3>
-        <div>_</div>
-        
-      </section>
+        <aside>I have too many to list. So anything interesting!</aside>
+      </details>
     </article>
-    
-    <aside>
-      <div align='center'>Deprecated code sample.</div>
-    </aside>
-    
-  </div>
+
+  </main>
+
+  <footer>
+    &copy; Luke Smith
+    <script>document.write(new Date().getFullYear());</script><noscript>1989</noscript>.
+    <a href="https://github.com/S3807720/wp">GitHub</a> <button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button>
+  </footer>
 
 </body>
 
-  <div id=footer>
-    &copy; Insert your name here
-    <script>document.write(new Date().getFullYear());</script><noscript>1989</noscript>.
-    Put your git repo link here (important!) and other links if you wish. <button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button>
-  </div>
+
 
 </html>
