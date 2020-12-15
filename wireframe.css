@@ -69,6 +69,13 @@ aside
   background-color: hsl(180,100%,97%);
   border: 5px solid hsl(180,100%,40%);
 }
+/* gotta add more colours! */
+details p 
+{
+    background-color: hsl(180,100%,97%);
+    border: 5px solid hsl(351, 71%, 85%);
+}
+
 section
 {
   background-color: hsl(30,100%,97%);
