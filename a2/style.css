@@ -1,1 +1,81 @@
-/* Insert your styles here */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* set default values for everything and smooth scrolling */
+html, body {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: brown;
+}
+
+/* generic container sizing as to keep everything consistent */
+.container {
+  position: relative;
+  padding: 20px 20px;
+  margin-left: 180px;
+  font-size: 18px;
+  max-width: 1800px;
+}
+#home {
+  background-color: rgba(0,0,0,0.1);
+  border: 1px solid black;
+  margin-right: 40px;
+}
+#home p, h4 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* set overall font type and style with text-shadows to make text more readable */
+* {
+  color: white;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  /* text-shadow: 0 0 1px #ffffb4, 0 0 2px #ffffb4, 1px 1px 3px #000, 0 0 4px #000; */
+}
+#disclaimer {
+  font-size: 12px;
+}
+h2 {
+  text-align: center;
+}
+
+.portrait {
+  float:left;
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+footer {
+  padding-top: 100px;
+}
+
+/* navigation container with fixed position to stay at top of page */
+@media only screen and (min-width: 600px) {
+  nav {
+    width: 140px;
+    margin-left: 30px;
+    position: fixed;
+    top: 50px;
+    z-index: 10000;
+    padding: 20px 0;
+  }
+
+  /* specifics of nav items */
+  nav a {
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #555;
+    color: white;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container, #home, nav {
+    margin: 10px;
+  }
+}
