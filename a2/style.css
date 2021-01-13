@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* https://fonts.google.com/specimen/Goudy+Bookletter+1911?query=19#license */
+@font-face {
+  font-family: GoudyBookletter1911;
+  src: url(../font/GoudyBookletter1911-Regular.ttf);
+}
 
 /* set default values for everything and smooth scrolling */
 html, body {
@@ -7,75 +12,221 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: brown;
+}
+
+/* set overall font type and style with text-shadows to make text more readable */
+* {
+  color: black;
+  box-sizing: border-box;
+  text-shadow: 0 0 1px #fff, 0 0 1px #000;
+}
+/* fonts */
+p, a {
+  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
+}
+
+h2 {
+  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
+  font-style: italic;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: outset black 1px;
+}
+
+/* img from https://www.chapman.edu/research/institutes-and-centers/cawl/about-letters/index.aspx */
+body {
+  background-image: url("../../media/bg.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* set a low opacity background image */
+body::before {
+  content: "";
+  background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Corbis-HU034804_nqfamv.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+}
+/* banner/top styles */
+.banner, .container, footer {
+  position: relative;
+  padding: 20px 20px;
+  max-width: 1600px;
+}
+
+.banner, .banner img {
+  max-height: 260px;
+}
+
+.banner img {
+  float: left;
+  max-width: 90%;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+}
+
+.banner h2 {
+  padding: 50px 0px;
+  background: none;
 }
 
 /* generic container sizing as to keep everything consistent */
 .container {
-  position: relative;
-  padding: 20px 20px;
-  margin-left: 180px;
+  padding-top: 30px;
   font-size: 18px;
-  max-width: 1800px;
 }
+/* content styles */
 #home {
-  background-color: rgba(0,0,0,0.1);
-  border: 1px solid black;
+  margin-top: 50px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: rgba(127,127,127,0.1);
   margin-right: 40px;
 }
+
 #home p, h4 {
   margin-left: 5px;
   margin-right: 5px;
 }
-/* set overall font type and style with text-shadows to make text more readable */
-* {
-  color: white;
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  /* text-shadow: 0 0 1px #ffffb4, 0 0 2px #ffffb4, 1px 1px 3px #000, 0 0 4px #000; */
-}
+
 #disclaimer {
   font-size: 12px;
 }
-h2 {
-  text-align: center;
-}
-
+/* keep picture of Baker near text */
 .portrait {
   float:left;
   margin: 10px;
 }
 
-ul {
-  list-style-type: none;
+footer {
+  font-size: 12px;
+  font-family: 'Open-Sans';
 }
 
-footer {
-  padding-top: 100px;
+.active {
+  background-color: rgba(0,0,0,0.2);
 }
 
 /* navigation container with fixed position to stay at top of page */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 960px) {
   nav {
     width: 140px;
     margin-left: 30px;
     position: fixed;
     top: 50px;
-    z-index: 10000;
-    padding: 20px 0;
+    z-index: 100;
+    padding: 230px 0;
+    background: none;
   }
 
   /* specifics of nav items */
   nav a {
-    font-size: 16px;
+    font-size: 22px;
+    text-align: center;
     text-decoration: none;
     display: block;
+    color: black;
     border-bottom: 1px solid #555;
-    color: white;
+  }
+  a:hover {
+    color: grey;
+  }
+
+  nav a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+  }
+
+  .container, footer {
+    margin-left: 180px;
   }
 }
-@media only screen and (max-width: 600px) {
-  .container, #home, nav {
+@media only screen and (max-width: 959px) {
+  .container, #home {
     margin: 10px;
+  }
+
+  nav {
+    overflow: hidden;
+    width: 100%;
+    top: 50px;
+    position: absolute;
+    background-color: #111;
+    text-align: center;
+  }
+
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  nav #navLinks {
+    display: none;
+    right: 50px;
+    background: #333;
+  }
+
+  /* Style navigation menu links */
+  nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+
+  nav .icon {
+    background-color: #333;
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    padding: 6px;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  /* set some icon styles */
+  .fa {
+    position: fixed;
+    right: 0;
+    padding: 6px;
+    color: rgba(200,200,200,0.1);
+  }
+
+  a:hover {
+    background-color: grey;
+  }
+
+  #home {
+    margin-top: 120px;
+  }
+  .banner {
+    padding-top: 85px;
+  }
+  .banner img {
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .banner, h2 {
+    margin: 0;
+    padding: 0;
+  }
+  #home {
+    margin-top: 15px;
+  }
+  .container, footer {
+    margin: 0px;
+    padding: 2px;
   }
 }

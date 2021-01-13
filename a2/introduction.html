@@ -14,19 +14,18 @@
 
 <body>
 
-  <header>
+  <header class = "banner">
+    <!-- <div id=banner> -->
+    <img src="../../media/ww1-soldier.png"> </img>
     <h2>ANZAC Douglas Raymond Baker - Letters Home</h2>
+    <!-- </div> -->
   </header>
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="introduction.html">Introduction</a>
-      <a href="postletters.html">Letters & Post Cards</a>
+    <a href="introduction.html" class="active">Introduction</a>
+    <a href="postletters.html">Letters & Post Cards</a>
     <a>Action Description</a>
-    <a>Places</a>
-    <a>Links to related material</a>
-    <a>Comments</a>
-    <a>Sitemap</a>
   </nav>
 
   <main class="container">
@@ -124,7 +123,7 @@
       </section>
     </main>
 
-    <footer class="container">
+    <footer>
       <div>&copy;<script>
         document.write(new Date().getFullYear());
       </script> Luke Smith, S3807720. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
