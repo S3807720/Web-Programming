@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ANZAC Douglas Raymond Baker</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ANZAC Douglas Raymond Baker</title>
 
-  <!-- Keep wireframe.css for debugging, add your css to style.css -->
-  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
-  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-  <!-- <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>"> -->
-  <script src='../wireframe.js'></script>
-</head>
+    <!-- Keep wireframe.css for debugging, add your css to style.css -->
+    <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+    <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>"> -->
+    <script src='../wireframe.js'></script>
+    <script src='../scripts.js'></script>
+  </head>
 
-<body>
+  <body>
 
-  <header class = "banner">
-    <!-- <div id=banner> -->
-    <img src="../../media/ww1-soldier.png"> </img>
-    <h2>ANZAC Douglas Raymond Baker - Letters Home</h2>
-    <!-- </div> -->
-  </header>
+    <header class = "banner">
+      <!-- <div id=banner> -->
+      <!-- <img src="../../media/ww1-soldier.png"> </img> -->
+      <h2>ANZAC Douglas Raymond Baker - Letters Home</h2>
+      <!-- </div> -->
+    </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="introduction.html" class="active">Introduction</a>
-    <a href="postletters.html">Letters & Post Cards</a>
-    <a>Action Description</a>
-  </nav>
+    <nav>
+      <!-- https://www.w3schools.com/howto/howto_js_mobile_navbar.asp -->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <i class="fa fa-bars"></i>
+       </a>
+      <div id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="introduction.html">Introduction</a>
+        <a href="postletters.html">Letters & Post Cards</a>
+        <a class="navLink">Action Description</a>
+      </div>
+    </nav>
 
   <main class="container">
     <section id="home">
