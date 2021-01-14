@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ANZAC Douglas Raymond Baker</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ANZAC Douglas Raymond Baker</title>
 
-    <!-- Keep wireframe.css for debugging, add your css to style.css -->
-    <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
-    <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>"> -->
-    <script src='../wireframe.js'></script>
-    <script src='../scripts.js'></script>
-  </head>
+  <!-- Keep wireframe.css for debugging, add your css to style.css -->
+  <link id='wireframecss' type="text/css" rel="stylesheet" href="../wireframe.css" disabled>
+  <link id='stylecss' type="text/css" rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>"> -->
+  <script src='../wireframe.js'></script>
+  <script src='../scripts.js'></script>
+</head>
 
-  <body>
+<body>
 
-    <header class = "banner">
-      <!-- <div id=banner> -->
-      <!-- <img src="../../media/ww1-soldier.png"> </img> -->
-      <h2>ANZAC Douglas Raymond Baker - Letters Home</h2>
-      <!-- </div> -->
-    </header>
+  <header class = "banner">
+    <h2>ANZAC Douglas Raymond Baker</h2> <h3> Letters Home</h3>
+  </header>
 
-    <nav>
-      <!-- https://www.w3schools.com/howto/howto_js_mobile_navbar.asp -->
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-         <i class="fa fa-bars"></i>
-       </a>
-      <div id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="postletters.html">Letters & Post Cards</a>
-        <a class="navLink">Action Description</a>
-      </div>
-    </nav>
+  <nav>
+    <!-- https://www.w3schools.com/howto/howto_js_mobile_navbar.asp -->
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
 
-    <main class="container">
-      <section id="">
+    <div id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="postletters.html" class="active">Letters & Post Cards</a>
+      <a href="action-description.html" class="navLink">Action Description</a>
+    </div>
+  </nav>
 
-      </section>
-    </main>
+  <main class="container">
 
-    <footer>
-      <div>&copy;<script>
-        document.write(new Date().getFullYear());
-      </script> Luke Smith, S3807720. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
-      <div>Disclaimer: This website is not a real website and is being developed as part of a School of
-        Science Web Programming course at RMIT University in Melbourne, Australia.</div>
+  </main>
+
+  <footer>
+    <div>&copy;<script>
+    document.write(new Date().getFullYear());
+    </script> Luke Smith, S3807720. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+    <div>Disclaimer: This website is not a real website and is being developed as part of a School of
+      Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
     </footer>
 
   </body>
-</html>
+  </html>

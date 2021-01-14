@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 /* https://fonts.google.com/specimen/Goudy+Bookletter+1911?query=19#license */
 @font-face {
   font-family: GoudyBookletter1911;
   src: url(../font/GoudyBookletter1911-Regular.ttf);
+}
+@font-face {
+  font-family: PTSerif-Bold;
+  src: url(../font/PTSerif-Bold.ttf);
 }
 
 /* set default values for everything and smooth scrolling */
@@ -10,34 +13,25 @@ html, body {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+
 }
+/* ////////////////////////////////////////////////////////////////////////////
+/    General CSS & Index styles
+/
+////////////////////////////////////////////////////////////////////////////*/
 
 /* set overall font type and style with text-shadows to make text more readable */
 * {
   color: black;
   box-sizing: border-box;
-  text-shadow: 0 0 1px #fff, 0 0 1px #000;
-}
-/* fonts */
-p, a {
-  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
-}
-
-h2 {
-  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
-  font-style: italic;
-  font-size: 30px;
-  text-align: center;
-  border-bottom: outset black 1px;
+  text-shadow: 1 1 2px #fff, 1 1 1px #000;
 }
 
 /* img from https://www.chapman.edu/research/institutes-and-centers/cawl/about-letters/index.aspx */
 body {
+  z-index: 1;
   background-image: url("../../media/bg.png");
-  background-repeat: repeat-y;
-  background-size: cover;
+  background-repeat: repeat;
   background-color: rgba(0,0,0,0.2);
 }
 
@@ -45,7 +39,6 @@ body {
 body::before {
   content: "";
   background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Corbis-HU034804_nqfamv.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: left;
   position: absolute;
@@ -55,76 +48,144 @@ body::before {
   left: 0px;
   opacity: 0.1;
 }
+
+/* fonts */
+p, a {
+  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
+}
+
+h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+  font-family: 'PTSerif-Bold';
+  text-align: center;
+}
+
+/* heading styles */
+h2 {
+  font-size:30px;
+  padding: 20px 0px;
+  background-color: rgba(200,200,200,0.1);
+}
+
+h3 {
+    border-bottom: outset black 1px;
+    font-size: 26px;
+    padding-bottom: 30px;
+    background-color: rgba(200,200,200,0.1);
+}
+
 /* banner/top styles */
 .banner, .container, footer {
   position: relative;
-  padding: 20px 20px;
   max-width: 1600px;
-}
-
-.banner, .banner img {
-  max-height: 260px;
-}
-
-.banner img {
-  float: left;
-  max-width: 90%;
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: cover;
-}
-
-.banner h2 {
-  padding: 50px 0px;
-  background: none;
 }
 
 /* generic container sizing as to keep everything consistent */
 .container {
-  padding-top: 30px;
+  display:inline-block;
+  margin-right: 40px;
   font-size: 18px;
 }
+
 /* content styles */
-#home {
-  margin-top: 50px;
+.home  {
   border: 1px solid rgba(0,0,0,0.1);
   background-color: rgba(127,127,127,0.1);
-  margin-right: 40px;
+  margin-bottom: 10px;
 }
 
-#home p, h4 {
+.home:first-of-type {
+  margin-left: 235px;
+  margin-bottom: 30px;
+}
+
+/* keep picture of Baker near text */
+.container img:first-child {
+  max-height: 355px;
+  float:left;
+}
+
+.home p, h4 {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-#disclaimer {
+.home p:last-child {
   font-size: 12px;
-}
-/* keep picture of Baker near text */
-.portrait {
-  float:left;
-  margin: 10px;
 }
 
-footer {
-  font-size: 12px;
-  font-family: 'Open-Sans';
+footer p {
+  font-size: 11px;
+  font-family: 'Open-Sans' !important;
 }
 
 .active {
   background-color: rgba(0,0,0,0.2);
 }
 
+/* ////////////////////////////////////////////////////////////////////////////
+/    Action Description Styles
+/
+////////////////////////////////////////////////////////////////////////////*/
+.letter {
+  background:url("../../media/letterbg.png");
+  background-repeat: repeat;
+  box-shadow: 5px 5px 9px #888;
+  margin-left: 9px;
+  padding: 20px 20px;
+  max-width: 900px;
+}
+/* letter font */
+.letter p, .letter h3, .letter h4 {
+    font-family: 'Open-Sans';
+}
+
+.landing, .push, .poziers, .wounded, .landing {
+  font-size: 17px;
+}
+#page1 {
+  display: inline-block;
+}
+#page2, #page3, #page4, #page5 {
+  display: none;
+}
+@media only screen and (min-width: 1300px) {
+  .letter {
+    margin-left: 200px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .letter {
+    margin-left: 350px;
+  }
+}
+/* ////////////////////////////////////////////////////////////////////////////
+/    Post Letter Styles
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+
+/* ////////////////////////////////////////////////////////////////////////////
+/    Mobile Styles
+/
+////////////////////////////////////////////////////////////////////////////*/
 /* navigation container with fixed position to stay at top of page */
 @media only screen and (min-width: 960px) {
+  #navLinks {
+    display: visible;
+  }
+
   nav {
+    height: 0;
+    overflow:visible;
+    display: block;
     width: 140px;
+    margin-top: 10px;
     margin-left: 30px;
-    position: fixed;
-    top: 50px;
+    position: sticky;
+    top: 15px;
     z-index: 100;
-    padding: 230px 0;
-    background: none;
   }
 
   /* specifics of nav items */
@@ -136,12 +197,13 @@ footer {
     color: black;
     border-bottom: 1px solid #555;
   }
+  nav a:last-child {
+    border: none;
+  }
   a:hover {
     color: grey;
   }
-
   nav a.icon {
-    position: absolute;
     right: 0;
     top: 0;
     display: none;
@@ -157,8 +219,7 @@ footer {
   }
 
   nav {
-    overflow: hidden;
-        z-index: 100;
+    z-index: 100;
     width: 100%;
     top: 50px;
     position: absolute;
@@ -193,21 +254,18 @@ footer {
     top: 0;
     right: 0;
   }
-  /* set some icon styles */
+  /* set some styles for the mobile menu icon*/
   .fa {
     position: fixed;
     right: 0;
     padding: 6px;
-    color: rgba(200,200,200,0.1);
+    color: rgb(200,200,200,0.8);
   }
 
   a:hover {
     background-color: grey;
   }
 
-  #home {
-    margin-top: 120px;
-  }
   .banner {
     padding-top: 85px;
   }
@@ -217,17 +275,21 @@ footer {
     margin: 0 auto;
   }
 }
-
 @media only screen and (max-width: 600px){
-  .banner, h2 {
-    margin: 0;
-    padding: 0;
-  }
   #home {
-    margin-top: 15px;
+    margin-top: 30px;
   }
   .container, footer {
     margin: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
     padding: 2px;
+  }
+  .container img:first-child {;
+    max-height: 250px;
+  }
+  .home:first-of-type {
+    margin-left: 165px;
+    margin-bottom: 20px;
   }
 }
