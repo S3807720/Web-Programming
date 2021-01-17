@@ -1,11 +1,23 @@
-/* https://fonts.google.com/specimen/Goudy+Bookletter+1911?query=19#license */
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    'Reset' and font import
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+/* https://fonts.google.com/specimen/Goudy+Bookletter+1911 */
 @font-face {
   font-family: GoudyBookletter1911;
   src: url(../font/GoudyBookletter1911-Regular.ttf);
 }
+/* https://fonts.google.com/specimen/PT+Serif */
 @font-face {
   font-family: PTSerif-Bold;
   src: url(../font/PTSerif-Bold.ttf);
+}
+/* https://www.1001fonts.com/mumsies-font.html */
+@font-face {
+  font-family: Mumsies;
+  src: url(../font/Mumsies.ttf);
 }
 
 /* set default values for everything and smooth scrolling */
@@ -16,6 +28,7 @@ html, body {
 
 }
 /* ////////////////////////////////////////////////////////////////////////////
+/
 /    General CSS & Index styles
 /
 ////////////////////////////////////////////////////////////////////////////*/
@@ -38,9 +51,12 @@ body {
 /* set a low opacity background image */
 body::before {
   content: "";
+  /* Australian War Memorial, ID A05774. */
   background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Corbis-HU034804_nqfamv.jpg");
   background-repeat: no-repeat;
   background-position: left;
+  background-attachment: fixed;
+  background-size: cover;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -50,8 +66,8 @@ body::before {
 }
 
 /* fonts */
-p, a {
-  font-family: 'GoudyBookletter1911', 'Open Sans', 'Times New Roman';
+a, li, .home p  {
+  font-family: 'GoudyBookletter1911', 'Times New Roman';
 }
 
 h2, h3, h4, h5 {
@@ -69,7 +85,7 @@ h2 {
 }
 
 h3 {
-    border-bottom: outset black 1px;
+    border-bottom: outset rgba(30,30,30,0.3) 1px;
     font-size: 26px;
     padding-bottom: 30px;
     background-color: rgba(200,200,200,0.1);
@@ -101,7 +117,7 @@ h3 {
 }
 
 /* keep picture of Baker near text */
-.container img:first-child {
+.portait {
   max-height: 355px;
   float:left;
 }
@@ -117,39 +133,63 @@ h3 {
 
 footer p {
   font-size: 11px;
-  font-family: 'Open-Sans' !important;
+  font-family: 'Open-Sans';
 }
 
 .active {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.1);
 }
 
 /* ////////////////////////////////////////////////////////////////////////////
-/    Action Description Styles
+/
+/                Action Description Styles
 /
 ////////////////////////////////////////////////////////////////////////////*/
+
 .letter {
   background:url("../../media/letterbg.png");
   background-repeat: repeat;
-  box-shadow: 5px 5px 9px #888;
+  box-shadow: 12px 12px 9px #888;
   margin-left: 9px;
   padding: 20px 20px;
+  margin-bottom: 10px;
   max-width: 900px;
 }
 /* letter font */
-.letter p, .letter h3, .letter h4 {
-    font-family: 'Open-Sans';
+.letter p, .post-card p  {
+    font-family: 'Mumsies';
+    opacity: 0.8;
 }
 
-.landing, .push, .poziers, .wounded, .landing {
-  font-size: 17px;
-}
 #page1 {
   display: inline-block;
 }
 #page2, #page3, #page4, #page5 {
   display: none;
 }
+
+li, li a {
+  list-style-type: none;
+}
+
+li a {
+  border-bottom: outset rgba(90,90,90,0.5) 1px !important;
+  font-size: 15px !important;
+  margin-left: 9px;
+}
+.font-button {
+  margin-bottom: 20px;
+  background-color: rgba(47,49,79,1); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+}
+/* transition pages to center */
 @media only screen and (min-width: 1300px) {
   .letter {
     margin-left: 200px;
@@ -160,22 +200,90 @@ footer p {
     margin-left: 350px;
   }
 }
+
 /* ////////////////////////////////////////////////////////////////////////////
+/
 /    Post Letter Styles
 /
 ////////////////////////////////////////////////////////////////////////////*/
-
-
-/* ////////////////////////////////////////////////////////////////////////////
-/    Mobile Styles
-/
-////////////////////////////////////////////////////////////////////////////*/
-/* navigation container with fixed position to stay at top of page */
+/* https://www.w3schools.com/cssref/css3_pr_background-size.asp
+this is only active on larger displays */
 @media only screen and (min-width: 960px) {
-  #navLinks {
-    display: visible;
+  .pc {
+    background-color: transparent;
+    width: 750px;
+    height: 600px;
+    font-size: 16px;
+    margin-bottom: 100px;
+    perspective: 1000px;
   }
 
+  /* This container is needed to position the front and back side */
+  .post-card {
+    position: relative;
+    /* left: 220px;
+    top: 0px; */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .pc:hover .post-card {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .post-card-front, .post-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  .post-card-front {
+    background:url("../../media/postcard.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #bbb;
+    color: black;
+  }
+
+  /* Style the back side */
+  .post-card-back {
+    background:url("../../media/letterbg.png");
+    padding: 60px 50px;
+    color: white;
+    transform: rotateY(180deg);
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .post-card p {
+    font-size: 14px;
+    margin: 20px 20px;
+  }
+  .post-card-front {
+    display: none;
+  }
+}
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    Media Queries
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+@media only screen and (min-width: 960px) {
+  /* for some reason, opening and closing the mobile menu would cause the
+  normal menu to display hidden so i had to use !important to fix it :( */
+  #navLinks {
+    display: block !important;
+  }
+  /* navigation container for desktop resolutions with fixed position to stay at top of page */
   nav {
     height: 0;
     overflow:visible;
@@ -191,18 +299,22 @@ footer p {
   /* specifics of nav items */
   nav a {
     font-size: 22px;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     display: block;
     color: black;
     border-bottom: 1px solid #555;
   }
-  nav a:last-child {
-    border: none;
+
+  /* add extra gap between main menu and sub menu */
+  nav a:nth-child(3){
+    margin-bottom: 8px;
   }
+
   a:hover {
-    color: grey;
+    background-color: rgba(90,90,90,0.3);
   }
+
   nav a.icon {
     right: 0;
     top: 0;
@@ -213,6 +325,7 @@ footer p {
     margin-left: 180px;
   }
 }
+/* tablet and small desktop screens, change menu to be toggle and resize certain elements */
 @media only screen and (max-width: 959px) {
   .container, #home {
     margin: 10px;
@@ -222,7 +335,7 @@ footer p {
     z-index: 100;
     width: 100%;
     top: 50px;
-    position: absolute;
+    position: fixed;
     background-color: #111;
     text-align: center;
   }
@@ -269,12 +382,15 @@ footer p {
   .banner {
     padding-top: 85px;
   }
+
   .banner img {
     max-height: 300px;
     display: block;
     margin: 0 auto;
   }
 }
+/* mobile screens and really tiny screens(don't ask we, I dunno who's still using a monitor from the 2000s),
+resize things such as the index image to allow readability */
 @media only screen and (max-width: 600px){
   #home {
     margin-top: 30px;

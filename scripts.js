@@ -14,7 +14,7 @@ const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 // letters and postcards
 async function togglePage(idName) {
   var y, b;
-  for (var i = 1; 6 > i; i++){
+  for (var i = 1; 4 > i; i++){
     let x = 'page' + i;
     if (x == idName) {
       y = document.getElementById(x);
@@ -31,6 +31,19 @@ async function togglePage(idName) {
   y.style.opacity = "100%";
 }
 
+/* make font more readable */
+function toggleFont() {
+  var x = document.querySelectorAll(".letter p, .post-card p");
+  var i;
+  for (i = 0; i < x.length; i++ ) {
+    if (x[i].style.fontFamily == "Mumsies") {
+      x[i].style.fontFamily = "Times New Roman";
+    }
+    else {
+      x[i].style.fontFamily = "Mumsies";
+    }
+  }
+}
 function toggleWireframe() {
 
   // get references to styleshets with preset id attributes
