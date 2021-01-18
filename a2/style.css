@@ -25,7 +25,9 @@ html, body {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
-
+}
+#navLinks a:last-child {
+  cursor: pointer;
 }
 /* ////////////////////////////////////////////////////////////////////////////
 /
@@ -37,7 +39,7 @@ html, body {
 * {
   color: black;
   box-sizing: border-box;
-  text-shadow: 1 1 2px #fff, 1 1 1px #000;
+  text-shadow: 0 0 2px #888, 0 0 1px #fff;
 }
 
 /* img from https://www.chapman.edu/research/institutes-and-centers/cawl/about-letters/index.aspx */
@@ -49,14 +51,15 @@ body {
 }
 
 /* set a low opacity background image */
-body::before {
+body::before{
   content: "";
   /* Australian War Memorial, ID A05774. */
   background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Corbis-HU034804_nqfamv.jpg");
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  height: 100%;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -71,8 +74,6 @@ a, li, .home p  {
 }
 
 h2, h3, h4, h5 {
-  margin: 0;
-  padding: 0;
   font-family: 'PTSerif-Bold';
   text-align: center;
 }
@@ -85,10 +86,11 @@ h2 {
 }
 
 h3 {
-    border-bottom: outset rgba(30,30,30,0.3) 1px;
-    font-size: 26px;
-    padding-bottom: 30px;
-    background-color: rgba(200,200,200,0.1);
+  border-bottom: outset rgba(30,30,30,0.3) 1px;
+  font-size: 26px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  background-color: rgba(200,200,200,0.1);
 }
 
 /* banner/top styles */
@@ -99,8 +101,10 @@ h3 {
 
 /* generic container sizing as to keep everything consistent */
 .container {
-  display:inline-block;
-  margin-right: 40px;
+  display:block;
+  align-self: center;
+  position: relative;
+  margin: 0 auto;
   font-size: 18px;
 }
 
@@ -117,18 +121,14 @@ h3 {
 }
 
 /* keep picture of Baker near text */
-.portait {
+.portrait {
   max-height: 355px;
   float:left;
 }
 
 .home p, h4 {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.home p:last-child {
-  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 footer p {
@@ -150,21 +150,23 @@ footer p {
   background:url("../../media/letterbg.png");
   background-repeat: repeat;
   box-shadow: 12px 12px 9px #888;
-  margin-left: 9px;
   padding: 20px 20px;
   margin-bottom: 10px;
   max-width: 900px;
+  margin: 0 auto;
 }
 /* letter font */
 .letter p, .post-card p  {
-    font-family: 'Mumsies';
-    opacity: 0.8;
+  font-family: 'Mumsies';
+  opacity: 0.8;
+  text-align: left;
 }
 
-#page1 {
-  display: inline-block;
+.page1 {
+  display: block;
 }
-#page2, #page3, #page4, #page5 {
+
+.page2, .page3 {
   display: none;
 }
 
@@ -177,29 +179,6 @@ li a {
   font-size: 15px !important;
   margin-left: 9px;
 }
-.font-button {
-  margin-bottom: 20px;
-  background-color: rgba(47,49,79,1); /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-}
-}
-/* transition pages to center */
-@media only screen and (min-width: 1300px) {
-  .letter {
-    margin-left: 200px;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  .letter {
-    margin-left: 350px;
-  }
-}
 
 /* ////////////////////////////////////////////////////////////////////////////
 /
@@ -209,30 +188,56 @@ li a {
 /* https://www.w3schools.com/cssref/css3_pr_background-size.asp
 this is only active on larger displays */
 @media only screen and (min-width: 960px) {
+  .card2, .card3 {
+    display: none;
+  }
+  .card1 {
+    display: block;
+  }
+
+  .button {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  .button a {
+    display: inline-block;
+    background-color: #EEE;
+    border: solid grey 1px;
+    padding: 20px 20px;
+    margin: 5px 5px;
+    margin-bottom: 20px;
+  }
+
   .pc {
     background-color: transparent;
     width: 750px;
     height: 600px;
     font-size: 16px;
-    margin-bottom: 100px;
-    perspective: 1000px;
+    perspective: 1100px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
   }
 
   /* This container is needed to position the front and back side */
   .post-card {
     position: relative;
-    /* left: 220px;
-    top: 0px; */
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 1s;
     transform-style: preserve-3d;
+    box-shadow: 12px 12px 15px #888;
+    margin-bottom: 100px;
   }
 
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .pc:hover .post-card {
-    transform: rotateY(180deg);
+    transform: rotateY(190deg);
   }
 
   /* Position the front and back side */
@@ -261,29 +266,38 @@ this is only active on larger displays */
     transform: rotateY(180deg);
   }
 }
-
+/* otherwise, just display the basic font */
 @media only screen and (max-width: 959px) {
   .post-card p {
     font-size: 14px;
     margin: 20px 20px;
   }
+  .post-card-back {
+    background: url("../../media/letterbg.png");
+    min-height: 380px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
   .post-card-front {
     display: none;
   }
+  .button {
+    display: none;
+  }
 }
+
 /* ////////////////////////////////////////////////////////////////////////////
 /
-/    Media Queries
+/    Media Queries & Nav bar
 /
 ////////////////////////////////////////////////////////////////////////////*/
-
+/* navigation container for desktop resolutions with fixed position to stay at top of page */
 @media only screen and (min-width: 960px) {
   /* for some reason, opening and closing the mobile menu would cause the
   normal menu to display hidden so i had to use !important to fix it :( */
   #navLinks {
     display: block !important;
   }
-  /* navigation container for desktop resolutions with fixed position to stay at top of page */
   nav {
     height: 0;
     overflow:visible;

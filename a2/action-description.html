@@ -42,24 +42,23 @@
       <a href="postletters.html">Letters & Post Cards</a>
       <a href="action-description.html" class="active">Action Description</a>
       <li>
-        <a href="javascript:void(0);" onclick= "togglePage('page1')">
+        <a href="javascript:void(0);" onclick= "togglePage('page1', 'page')">
           An Account of the Gallipoli Landing
         </a>
-        <a href="javascript:void(0);" onclick= "togglePage('page2')">
+        <a href="javascript:void(0);" onclick= "togglePage('page2', 'page')">
           The "Big Push"
         </a>
-        <a href="javascript:void(0);" onclick= "togglePage('page3')">
+        <a href="javascript:void(0);" onclick= "togglePage('page3', 'page')">
           Battle of Poziers
         </a>
-        <!-- <a> Getting Wounded, Again </a>
-        <a> What it Takes to Win a Military Medal </a> -->
       </li>
-
+      <a href="javascript:void(0);" onclick= "toggleFont()">Change Font</a>
+      <a target="popup" onclick="window.open
+      ('contact.html','Contact Form','width=800,height=600')">Contact</a>
     </div>
   </nav>
 
   <main class="container">
-          <a class="font-button" href="javascript:void(0);" onclick= "toggleFont()">Change Font</a>
     <!--  page 1  -->
     <section id="page1">
       <div class="letter">
@@ -246,7 +245,7 @@
   <footer>
     <div>&copy;<script>
     document.write(new Date().getFullYear());
-    </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo. </a> Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+    </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo</a>. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
     <div>Disclaimer: This website is not a real website and is being developed as part of a School of
       Science Web Programming course at RMIT University in Melbourne, Australia.</div>
       <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>

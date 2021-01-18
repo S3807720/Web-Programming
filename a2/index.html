@@ -38,7 +38,10 @@
       <a href="index.html" class="active">Home</a>
       <a href="postletters.html">Letters & Post Cards</a>
       <a href="action-description.html">Action Description</a>
+      <a target="popup" onclick="window.open
+      ('contact.html','Contact Form','width=800,height=600')">Contact</a>
     </div>
+
   </nav>
 
   <main class="container">
@@ -172,7 +175,7 @@
     <footer>
       <div>&copy;<script>
       document.write(new Date().getFullYear());
-      </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo. </a> Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
+      </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo</a>. Last modified <?= date ("Y F d  H:i", filemtime($_SERVER['SCRIPT_FILENAME'])); ?>.</div>
       <div>Disclaimer: This website is not a real website and is being developed as part of a School of
         Science Web Programming course at RMIT University in Melbourne, Australia.</div>
         <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
