@@ -1,0 +1,428 @@
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    'Reset' and font import
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+/* https://fonts.google.com/specimen/Goudy+Bookletter+1911 */
+@font-face {
+  font-family: GoudyBookletter1911;
+  src: url(../font/GoudyBookletter1911-Regular.ttf);
+}
+/* https://fonts.google.com/specimen/PT+Serif */
+@font-face {
+  font-family: PTSerif-Bold;
+  src: url(../font/PTSerif-Bold.ttf);
+}
+/* https://www.1001fonts.com/mumsies-font.html */
+@font-face {
+  font-family: Mumsies;
+  src: url(../font/Mumsies.ttf);
+}
+
+/* set default values for everything and smooth scrolling */
+html, body {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+#navLinks a:last-child {
+  cursor: pointer;
+}
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    General CSS & Index styles
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+/* set overall font type and style with text-shadows to make text more readable */
+* {
+  color: black;
+  box-sizing: border-box;
+  text-shadow: 0 0 2px #888, 0 0 1px #fff;
+}
+
+/* img from https://www.chapman.edu/research/institutes-and-centers/cawl/about-letters/index.aspx */
+body {
+  z-index: 1;
+  background-image: url("../../media/bg.png");
+  background-repeat: repeat;
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* set a low opacity background image */
+body::before{
+  content: "";
+  /* Australian War Memorial, ID A05774. */
+  background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Corbis-HU034804_nqfamv.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+}
+
+/* fonts */
+a, li, .home p  {
+  font-family: 'GoudyBookletter1911', 'Times New Roman';
+}
+
+h2, h3, h4, h5 {
+  font-family: 'PTSerif-Bold';
+  text-align: center;
+}
+
+/* heading styles */
+h2 {
+  font-size:30px;
+  padding: 20px 0px;
+}
+
+h3 {
+  border-bottom: outset rgba(30,30,30,0.3) 1px;
+  font-size: 26px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+}
+
+/* banner/top styles */
+.banner, .container, footer {
+  position: relative;
+  max-width: 1600px;
+}
+
+.banner {
+  /* background:url("../../media/postcard3.png"); */
+    background-color: rgba(200,200,200,0.1);
+}
+/* generic container sizing as to keep everything consistent */
+.container {
+  display:block;
+  align-self: center;
+  position: relative;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* content styles */
+.home  {
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: rgba(127,127,127,0.1);
+  margin-bottom: 10px;
+}
+
+.home:first-of-type {
+  margin-left: 235px;
+  margin-bottom: 30px;
+}
+
+/* keep picture of Baker near text */
+.portrait {
+  max-height: 355px;
+  float:left;
+}
+
+.home p, h4 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+footer p {
+  font-size: 11px;
+  font-family: 'Open-Sans';
+}
+
+.active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/                Action Description Styles
+/
+////////////////////////////////////////////////////////////////////////////*/
+
+.letter {
+  background:url("../../media/letterbg.png");
+  background-repeat: repeat;
+  box-shadow: 12px 12px 9px #888;
+  padding: 20px 33px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+/* letter font */
+.letter p, .post-card p  {
+  font-family: 'Mumsies';
+  opacity: 0.8;
+  text-align: left;
+}
+
+#page1 {
+  display: block;
+}
+
+#page2, #page3 {
+  display: none;
+}
+
+li, li a {
+  list-style-type: none;
+}
+
+li a {
+  border-bottom: outset rgba(90,90,90,0.5) 1px !important;
+  font-size: 15px !important;
+  margin-left: 9px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    Post Letter Styles
+/
+////////////////////////////////////////////////////////////////////////////*/
+/* https://www.w3schools.com/cssref/css3_pr_background-size.asp
+this is only active on larger displays */
+@media only screen and (min-width: 960px) {
+  #card2, #card3 {
+    display: none;
+  }
+  #card1 {
+    display: block;
+  }
+
+  .button {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  .button a {
+    display: inline-block;
+    background-color: #EEE;
+    border: solid grey 1px;
+    padding: 20px 20px;
+    margin: 5px 5px;
+    margin-bottom: 20px;
+  }
+
+  .pc {
+    background-color: transparent;
+    width: 750px;
+    height: 600px;
+    font-size: 16px;
+    perspective: 1100px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+  }
+
+  /* This container is needed to position the front and back side */
+  .post-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    box-shadow: 12px 12px 15px #888;
+    margin-bottom: 100px;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .pc:hover .post-card {
+    transform: rotateY(190deg);
+  }
+
+  /* Position the front and back side */
+  #post-card-front, .post-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  #post-card-front {
+    background:url("../../media/postcard.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #bbb;
+    color: black;
+  }
+
+  /* Style the back side */
+  .post-card-back {
+    background:url("../../media/letterbg.png");
+    padding: 60px 50px;
+    color: white;
+    transform: rotateY(180deg);
+  }
+}
+/* otherwise, just display the basic font */
+@media only screen and (max-width: 959px) {
+  .post-card p {
+    font-size: 14px;
+    margin: 20px 20px;
+  }
+  .post-card-back {
+    background: url("../../media/letterbg.png");
+    min-height: 380px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
+  .post-card-front {
+    display: none;
+  }
+  .button {
+    display: none;
+  }
+}
+
+/* ////////////////////////////////////////////////////////////////////////////
+/
+/    Media Queries & Nav bar
+/
+////////////////////////////////////////////////////////////////////////////*/
+/* navigation container for desktop resolutions with fixed position to stay at top of page */
+@media only screen and (min-width: 960px) {
+  /* for some reason, opening and closing the mobile menu would cause the
+  normal menu to display hidden so i had to use !important to fix it :( */
+  #navLinks {
+    display: block !important;
+  }
+  nav {
+    height: 0;
+    overflow:visible;
+    display: block;
+    width: 140px;
+    margin-top: 10px;
+    margin-left: 30px;
+    position: sticky;
+    top: 15px;
+    z-index: 100;
+  }
+
+  /* specifics of nav items */
+  nav a {
+    font-size: 22px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    color: black;
+    border-bottom: 1px solid #555;
+  }
+
+  /* add extra gap between main menu and sub menu */
+  nav a:nth-child(3){
+    margin-bottom: 8px;
+  }
+
+  a:hover {
+    background-color: rgba(90,90,90,0.3);
+  }
+
+  nav a.icon {
+    right: 0;
+    top: 0;
+    display: none;
+  }
+
+  .container, footer {
+    margin-left: 180px;
+  }
+}
+/* tablet and small desktop screens, change menu to be toggle and resize certain elements */
+@media only screen and (max-width: 959px) {
+  .container, #home {
+    margin: 10px;
+  }
+
+  nav {
+    z-index: 100;
+    width: 100%;
+    top: 50px;
+    position: fixed;
+    background-color: #111;
+    text-align: center;
+  }
+
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  nav #navLinks {
+    display: none;
+    right: 50px;
+    background: #333;
+  }
+
+  /* Style navigation menu links */
+  nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+
+  nav .icon {
+    background-color: #333;
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    padding: 6px;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  /* set some styles for the mobile menu icon*/
+  .fa {
+    position: fixed;
+    right: 0;
+    padding: 6px;
+    color: rgb(200,200,200,0.8);
+  }
+
+  a:hover {
+    background-color: grey;
+  }
+
+  .banner {
+    padding-top: 85px;
+  }
+
+  .banner img {
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+/* mobile screens and really tiny screens(don't ask we, I dunno who's still using a monitor from the 2000s),
+resize things such as the index image to allow readability */
+@media only screen and (max-width: 600px){
+  #home {
+    margin-top: 30px;
+  }
+  .container, footer {
+    margin: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 2px;
+  }
+  .container img:first-child {;
+    max-height: 250px;
+  }
+  .home:first-of-type {
+    margin-left: 165px;
+    margin-bottom: 20px;
+  }
+}
