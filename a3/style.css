@@ -26,9 +26,13 @@ html, body {
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 #navLinks a:last-child {
   cursor: pointer;
 }
+
 /* ////////////////////////////////////////////////////////////////////////////
 /
 /    General CSS & Index styles
@@ -37,9 +41,9 @@ html, body {
 
 /* set overall font type and style with text-shadows to make text more readable */
 * {
-  color: black;
+  color: #222;
   box-sizing: border-box;
-  text-shadow: 0 0 2px #888, 0 0 1px #fff;
+  text-shadow: 0 0 4px rgba(155,170,257,0.5), 0 0 1px #000;
 }
 
 /* img from https://www.chapman.edu/research/institutes-and-centers/cawl/about-letters/index.aspx */
@@ -127,7 +131,24 @@ h3 {
   max-height: 355px;
   float:left;
 }
-
+/* add styles to table to look nice and fit right */
+td, th {
+    border: 1px solid rgba(0,0,0,0.1);
+}
+table {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0,0,0,0.1);
+}
+th {
+  font-size: 20px;
+  padding-bottom: 0px;
+}
+td {
+  padding-left: 80px;
+  padding-right: 70px;
+}
 .home p, h4 {
   padding-left: 5px;
   padding-right: 5px;
@@ -151,11 +172,22 @@ footer p {
 .letter {
   background:url("../../media/letterbg.png");
   background-repeat: repeat;
+  overflow-y: scroll;
   box-shadow: 12px 12px 9px #888;
   padding: 20px 33px;
   max-width: 900px;
+  max-height: 900px;
   margin: 0 auto;
   margin-bottom: 15px;
+  overflow: scroll;
+}
+/* hide scrolly bar */
+.letter::-webkit-scrollbar, .post-card-back::-webkit-scrollbar {
+  display:none;
+}
+.letter {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 /* letter font */
 .letter p, .post-card p  {
@@ -217,12 +249,11 @@ this is only active on larger displays */
   .pc {
     background-color: transparent;
     width: 750px;
-    height: 600px;
-    font-size: 16px;
+    height: 650px;
+    font-size: 17px;
     perspective: 1100px;
     margin: 0 auto;
     margin-bottom: 10px;
-
   }
 
   /* This container is needed to position the front and back side */
@@ -237,9 +268,9 @@ this is only active on larger displays */
     margin-bottom: 100px;
   }
 
-  /* Do an horizontal flip when you move the mouse over the flip box container */
+  /* flip the card on hover */
   .pc:hover .post-card {
-    transform: rotateY(190deg);
+    transform: rotateY(173deg);
   }
 
   /* Position the front and back side */
@@ -267,6 +298,7 @@ this is only active on larger displays */
     padding: 60px 50px;
     color: white;
     transform: rotateY(180deg);
+    overflow: scroll;
   }
 }
 /* otherwise, just display the basic font */

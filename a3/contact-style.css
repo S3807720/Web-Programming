@@ -1,5 +1,5 @@
 
-input[type=text], input[type=tel], select {
+input[type=text], input[type=email], input[type=tel], select {
   width: 100%;
   padding: 8px;
   border: 1px solid #999;
@@ -8,14 +8,21 @@ input[type=text], input[type=tel], select {
   margin-top: 6px;
 }
 
-input[type=text], input[type=tel], select, textarea {
+input[type=text], input[type=email], input[type=tel], select, textarea {
   margin-bottom: 16px;
 }
-
+form div {
+  margin-bottom: 8px;
+  color: red;
+}
 textarea {
   height: 200px;
   width: 100%;
   resize: vertical;
+}
+
+input:focus {
+  border: solid red 3px;
 }
 
 input[type=submit] {
