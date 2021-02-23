@@ -1,14 +1,5 @@
 <?php
 session_start();
-if(!empty($_POST["rememberMe"])) {
-	setcookie ("name",$_POST["name"],time()+ 3600);
-	setcookie ("email",$_POST["email"],time()+ 3600);
-	setcookie ("number",$_POST["number"],time()+ 3600);
-} else {
-	setcookie ("name","");
-	setcookie ("email","");
-	setcookie ("number","");
-}
 
 function csv_array() {
   $fileName = "letters-home.txt";
