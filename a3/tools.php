@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 function csv_array() {
   $fileName = "letters-home.txt";

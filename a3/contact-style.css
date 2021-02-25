@@ -1,4 +1,4 @@
-input[type=text], input[type=email], input[type=tel], select {
+#contact input[type=text], input[type=email], input[type=tel], select {
   width: 100%;
   padding: 8px;
   border: 1px solid #999;
@@ -7,24 +7,24 @@ input[type=text], input[type=email], input[type=tel], select {
   margin-top: 6px;
 }
 
-input[type=text], input[type=email], input[type=tel], select, textarea {
+#contact input[type=text], input[type=email], input[type=tel], select, textarea {
   margin-bottom: 16px;
 }
-form div {
+#contact div {
   margin-bottom: 8px;
   color: red;
 }
-textarea {
+#contact textarea {
   height: 200px;
   width: 100%;
   resize: vertical;
 }
 
-input:focus {
+#contact input:focus {
   border: solid red 3px;
 }
 
-input[type=submit] {
+#contact input[type=submit] {
   background-color: #888;
   width: 150px;
   color: white;
@@ -33,7 +33,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+#contact input[type=submit]:hover {
   background-color: #aaa;
 }
 

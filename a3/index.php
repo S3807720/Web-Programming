@@ -15,7 +15,7 @@
 
 </nav>
 <main class="container">
-            
+
   <img src="https://discoveringanzacs.naa.gov.au/media/mawson/108032.png"
   class ="portrait" alt="portrait of douglas raymond baker">
   <section class="home">
@@ -225,5 +225,5 @@
         format, making my part in this infinitely easier.
       </p>
     </section>
-
+</main>
     <?php require_once("footer.php"); ?>

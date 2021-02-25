@@ -70,6 +70,7 @@ body::before{
   bottom: 0px;
   left: 0px;
   opacity: 0.1;
+  z-index: -5;
 }
 
 /* fonts */
@@ -103,7 +104,7 @@ h3 {
 
 .banner {
   /* background:url("../../media/postcard3.png"); */
-    background-color: rgba(200,200,200,0.1);
+  background-color: rgba(200,200,200,0.1);
 }
 /* generic container sizing as to keep everything consistent */
 .container {
@@ -133,7 +134,7 @@ h3 {
 }
 /* add styles to table to look nice and fit right */
 td, th {
-    border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 table {
   width: 70%;
@@ -323,9 +324,61 @@ this is only active on larger displays */
 
 /* ////////////////////////////////////////////////////////////////////////////
 /
+/    Login
+/
+////////////////////////////////////////////////////////////////////////////*/
+/* display items horizontally + max width / gap between edges of screen */
+#login {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+  max-width: 800px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+/* margins&padding for each label */
+#login label {
+  margin: 5px 10px 5px 0;
+  padding-left: 8px;
+}
+
+/* style inputs */
+#login input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/* style the submit button */
+#login button {
+  width: 150px;
+  height: 30px;
+  background-color: #888;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+#login button:hover {
+  background-color: #aaa;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////
+/
 /    Media Queries & Nav bar
 /
 ////////////////////////////////////////////////////////////////////////////*/
+@media only screen and (min-width: 600px) {
+  #login {
+    height: 30px;
+  }
+}
 /* navigation container for desktop resolutions with fixed position to stay at top of page */
 @media only screen and (min-width: 960px) {
   /* for some reason, opening and closing the mobile menu would cause the
@@ -428,17 +481,32 @@ this is only active on larger displays */
     background-color: grey;
   }
 
-  .banner {
-    padding-top: 85px;
-  }
-
   .banner img {
     max-height: 300px;
     display: block;
     margin: 0 auto;
   }
+
+  /* login */
+  #login input, label {
+    max-width: 120px;
+    margin: 5px;
+  }
+  #login input {
+    max-width:150px;
+    height: 35px;
+  }
+  #login button {
+    padding: 10px;
+    margin-left: 5px;
+    max-width:150px;
+    height: 35px;
+  }
+  #login {
+    margin-top: 60px;
+  }
 }
-/* mobile screens and really tiny screens(don't ask we, I dunno who's still using a monitor from the 2000s),
+/* mobile screens and really tiny screens(don't ask, I dunno who's still using a monitor from the 2000s),
 resize things such as the index image to allow readability */
 @media only screen and (max-width: 600px){
   #home {
@@ -456,5 +524,20 @@ resize things such as the index image to allow readability */
   .home:first-of-type {
     margin-left: 165px;
     margin-bottom: 20px;
+  }
+
+  /* login */
+  #login {
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 10px;
+  }
+  #login input {
+    max-width: 400px;
+    height: 40px;
+  }
+  #login button {
+    min-width: 400px;
+    height: 40px;
   }
 }

@@ -1,12 +1,43 @@
 <?php
 /* set variables to blank */
 $name = $email = $number = $message = $subject = "";
-$nameError = $emailError = $numberError = $subjectError = $messageError = "";
+$nameError = $emailError = $numberError = $subjectError = $messageError = $logError = "";
 $regexPatt = "/^(([A-Za-z]+[,.]?[ ]?|[a-z]+['-]?)+)$/i";
 $numRegex = "/^(?:\+\D*6\D*1(?:\s)?)?\D*0(\D*\d){9}\D*$/";
 $errCheck = TRUE;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+session_start();
+
+/* if login */
+if (isset($_POST["login"])) {
+  login();
+}
+/* hard coded login, usually would be in a database */
+function login() {
+  $correctUsername = "IanBBB";
+  $correctPassword = "p4ssw0rd";
+  $username = htmlspecialchars($_POST['username']);
+  $password = htmlspecialchars($_POST['password']);
+  if (isset($_SESSION['user'])) {
+    unset($_SESSION['user']);
+  } else if (!empty($username)) {
+    setcookie("username", $username, time() + 30);
+    if($username == $correctUsername && $password == $correctPassword) {
+      $logError = "";
+      $_SESSION['user'] = $username;
+      $_SESSION['loggedin'] = TRUE;
+    } else if(empty($username) || empty($password)) {
+      $_SESSION['error'] = "Details must not be empty.";
+    }else {
+      $_SESSION['error'] = "That account does not exist.";
+    }
+  }
+  header('Location: '.$_SERVER['HTTP_REFERER']);
+  exit();
+}
+
+/* if contact form */
+if (isset($_POST["submit"])) {
   /* trim and check if empty or valid */
   if (empty($_POST["name"])) {
     $nameError = "Name is required";
@@ -50,12 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	setcookie ("email",$email,time()+ 3600);
   	setcookie ("number",$number,time()+ 3600);
   	setcookie("rememberMe",$_POST["rememberMe"],time()+3600, "/");
-    if ((!empty($name) && !empty($email) && !empty($subject) && !empty($message))
-        && $errCheck == TRUE) {
-      $details = array ($name, $email, $number, $subject, $message);
-      saveFile($details);
-    }
-
   } else {
   	// set to empty and wipe cookies
   	setcookie ("name", "", time()-3600);
@@ -66,8 +91,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	unset($_COOKIE["number"]);
   	unset($_COOKIE["rememberMe"]);
   }
-} else {
-  exit('Invalid request');
+  /* save to file if no errors found & set success message*/
+  if ( (!empty($name) && !empty($email) && !empty($subject) && !empty($message) )
+      && $errCheck == TRUE) {
+    $details = array ($name, $email, $number, $subject, $message);
+    saveFile($details);
+    $_SESSION['message'] = "Your inquiry has been recieved. Thank you for contacting us.";
+    header("Location: contact.php");
+    exit();
+  }
 }
 
 function saveFile($data) {

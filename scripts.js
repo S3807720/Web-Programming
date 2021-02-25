@@ -76,16 +76,22 @@ function toggleWireframe() {
 }
 
 function validateName(name) {
+  //pattern for any western name
   var patt = /^(\s)*[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*(\s)*$/;
+  //set error to blank if input is ok
   if (patt.test(name.value)) {
     document.getElementById('errorName').innerHTML = "";
+    return TRUE;
   }
+  //otherwise set invalid error
   else {
     document.getElementById('errorName').innerHTML = "Invalid name.";
     document.form.name.focus() ;
+    return FALSE;
+    event.preventDefault();
   }
 }
-
+//same here, but for ph numbers
 function validateNum(num) {
   var patt = /^(?:\+\D*6\D*1(?:\s)?)?\D*0(\D*\d){9}\D*$/;
   if (patt.test(num.value)) {
@@ -99,17 +105,12 @@ function validateNum(num) {
   }
 }
 
-function validateField(type, val) {
-    var x = document.getElementById(type);
-    if( val.value == "" ) {
-      x.innerHTML = "This field cannot be empty.";
-    }
-    else {
-      x.innerHTML = "";
-    }
-}
-
+//check if field is empty and set error for that field
 function validateEmptyFields() {
+  if (!validateName(document.form.name.value)) {
+    event.preventDefault();
+    return FALSE;
+  }
   if( document.form.name.value == "" ) {
     document.getElementById('errorName').innerHTML = "Name cannot be empty.";
     document.form.name.focus() ;
@@ -131,7 +132,7 @@ function validateEmptyFields() {
   }
   if (document.form.message.value == "" ||document.form.email.value == ""  ||  document.form.subject.value == ""
   || document.form.name.value == "") {
-    return (false);
+    return (FALSE);
   }
-  return( true );
+  return( FALSE );
 }
