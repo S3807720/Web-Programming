@@ -14,8 +14,9 @@ function csv_array() {
   return $data;
 }
 
-function print_letter($i) {
+function print_letter() {
   $data = csv_array();
+  $i = rand(0, count($data)-1);
   if ($data ==  NULL) {
     print "Oh the file could not be read. :(";
   }

@@ -11,14 +11,16 @@
     <a href="postletters.php">Letters & Post Cards</a>
     <a href="action-description.php">Action Description</a>
     <a href="contact.php" class="active">Contact</a>
+    <?php if (isset($_SESSION['user'])): ?>
+      <a href="edit-letters.php"> Edit Letters(secret page)</a>
+    <?php endif; ?>
   </div>
 
 </nav>
 
 <main class="container">
 
-  <form id="contact" name="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"
-    method="post" onsubmit="validateEmptyFields()">
+  <form id="contact" name="form" method="post">
 
     <label for="name">Name</label>
     <input oninput="validateName(this)" type="text"
@@ -51,13 +53,13 @@
     </div>
 
     <label for="subject">Subject</label>
-    <input oninput="validateField('errorSub', this)" type="text" id="subject" name="subject" placeholder="Enter the subject.">
+    <input type="text" id="subject" name="subject" placeholder="Enter the subject.">
     <div id="errorSub">
       <?php echo $subjectError; ?>
     </div>
 
     <label for="message">Message</label>
-    <textarea oninput="validateField('errorMsg', this)" id="message" name="message" placeholder="Type your message here"></textarea>
+    <textarea id="message" name="message" placeholder="Type your message here"></textarea>
     <div id="errorMsg">
       <?php
       /* set messageError to session msg and destroy
@@ -77,20 +79,8 @@
     id="rememberMe" name="rememberMe">
     <label for="rememberMe">Remember me</label>
     <!-- onclick="validateEmptyFields()" -->
-    <input name="submit"  type="submit" value="Submit" >
+    <input name="submit" type="submit" value="Submit" >
   </form>
 
 </main>
-
-<footer>
-
-  <div>&copy;<script>
-  document.write(new Date().getFullYear());
-  </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo</a>.</div>
-  <div>Disclaimer: This website is not a real website and is being developed as part of a School of
-    Science Web Programming course at RMIT University in Melbourne, Australia.</div>
-    <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
-  </footer>
-
-</body>
-</html>
+<?php require_once("footer.php"); ?>

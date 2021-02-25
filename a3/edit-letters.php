@@ -8,19 +8,28 @@ require_once("post-validation.php");
     <i class="fa fa-bars"></i>
   </a>
   <div id="navLinks">
-    <a href="index.php" class="active">Home</a>
+    <a href="index.php">Home</a>
     <a href="postletters.php">Letters & Post Cards</a>
     <a href="action-description.php">Action Description</a>
     <a href="contact.php">Contact</a>
+    <?php if (isset($_SESSION['user'])): ?>
+      <a href="edit-letters.php" class="active"> Edit Letters(secret page)</a>
+    <?php endif; ?>
   </div>
 
 </nav>
 <main class="container">
 <?php
 if (!isset($_SESSION["user"])) {
-  echo "<img url=\"denied.jpg\"> <p class='container'> You are not authorized to view this page. Goodbye. </p>
-      <a class ='container' href=\"index.php\">Return to home</a>";
+  // https://makeameme.org/meme/get-out-right-e2597d7b23
+  echo "<img src=\"https://i.pinimg.com/originals/a2/58/d3/a258d362f6ad391e3619d7f0b79a1f42.gif\">
+      <p> You are not authorized to view this page. Go away. </p>";
+      /* yeah you aren't staying.. */
+      header('Refresh: 3; URL=index.php');
 }else {
-  echo "<p class='container'> hi how u </p>";
+  echo "<p> Welcome to the super secret page for.. editing letters? I don't want you to do that but okay.</p>
+        <img src='../../media/website-under-construction.png'>";
+
 } ?>
 </main>
+<?php require_once("footer.php"); ?>

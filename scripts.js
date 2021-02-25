@@ -81,58 +81,54 @@ function validateName(name) {
   //set error to blank if input is ok
   if (patt.test(name.value)) {
     document.getElementById('errorName').innerHTML = "";
-    return TRUE;
+    return true;
   }
   //otherwise set invalid error
   else {
     document.getElementById('errorName').innerHTML = "Invalid name.";
-    document.form.name.focus() ;
-    return FALSE;
-    event.preventDefault();
+    return false;
   }
 }
 //same here, but for ph numbers
 function validateNum(num) {
-  var patt = /^(?:\+\D*6\D*1(?:\s)?)?\D*0(\D*\d){9}\D*$/;
+  var patt = /^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})*$/;
   if (patt.test(num.value)) {
     document.getElementById('errorNum').innerHTML = "";
-    return TRUE;
+    return true;
   }
   else {
     document.getElementById('errorNum').innerHTML = "Invalid number. Must be of format '02 1234 5678'.";
-    document.form.num.focus() ;
-    return FALSE;
+    return false;
   }
 }
 
 //check if field is empty and set error for that field
+var form = document.getElementById('contact');
+form.addEventListener('submit',validateEmptyFields);
+
 function validateEmptyFields() {
-  if (!validateName(document.form.name.value)) {
+  if (validateName(document.form.name.value) == false) {
     event.preventDefault();
-    return FALSE;
   }
   if( document.form.name.value == "" ) {
     document.getElementById('errorName').innerHTML = "Name cannot be empty.";
-    document.form.name.focus() ;
+    event.preventDefault();
   }
   if( document.form.email.value == "" ) {
     document.getElementById('errorEm').innerHTML = "Email cannot be empty.";
-    document.form.email.focus() ;
+    event.preventDefault();
   }
   if( document.form.subject.value == "") {
     document.getElementById('errorSub').innerHTML = "Subject cannot be empty.";
-    document.form.subject.focus() ;
+    event.preventDefault();
   }
   if( document.form.message.value == "" ) {
     document.getElementById('errorMsg').innerHTML = "Message cannot be empty.";
-    document.form.message.focus();
+    event.preventDefault();
   }
   if (document.form.number.value != "") {
-    validateNum(document.form.number.value);
+    if (validateNum(document.form.number.value) == false) {
+      event.preventDefault();
+    }
   }
-  if (document.form.message.value == "" ||document.form.email.value == ""  ||  document.form.subject.value == ""
-  || document.form.name.value == "") {
-    return (FALSE);
-  }
-  return( FALSE );
 }

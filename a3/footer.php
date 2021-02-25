@@ -11,4 +11,5 @@ Science Web Programming course at RMIT University in Melbourne, Australia.</div>
 </footer>
 
 </body>
+<script type="text/javascript" src='../scripts.js'></script>
 </html>

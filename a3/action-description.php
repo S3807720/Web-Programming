@@ -1,5 +1,6 @@
 <?php
 require_once("header.php");
+require_once("tools.php");
 ?>
 
   <nav>
@@ -25,6 +26,9 @@ require_once("header.php");
       </li>
       <a href="javascript:void(0);" onclick= "toggleFont()">Change Font</a>
       <a href="contact.php">Contact</a>
+      <?php if (isset($_SESSION['user'])): ?>
+        <a href="edit-letters.php"> Edit Letters(secret page)</a>
+      <?php endif; ?>
     </div>
   </nav>
 
@@ -97,9 +101,11 @@ require_once("header.php");
           ---oooOooo---
         </p>
       </div>
+
     </section>
     <!-- page 2 -->
     <section id="page2">
+
       <div class="letter">
         <h4> The "Big Push" </h4>
         <h5> Somewhere in France, July 30th. 1916. 30th July 1916. </h5>
@@ -145,6 +151,7 @@ require_once("header.php");
     </section>
     <!-- page 3 -->
     <section id="page3">
+
       <div class="letter">
         <h4> Battle of Poziers </h4>
         <h5> Somewhere in France, 13th Aug. 1916.</h5>
@@ -210,15 +217,4 @@ require_once("header.php");
     </section>
     <!-- other pages would go here if it was a complete site -->
   </main>
-
-  <footer>
-    <div>&copy;<script>
-    document.write(new Date().getFullYear());
-    </script> Luke Smith, S3807720. <a href="https://github.com/S3807720/wp" target="blank"> Github repo</a>.</div>
-    <div>Disclaimer: This website is not a real website and is being developed as part of a School of
-      Science Web Programming course at RMIT University in Melbourne, Australia.</div>
-      <div><button id='toggleWireframeCSS' onclick='toggleWireframe()'>Toggle Wireframe CSS</button></div>
-    </footer>
-
-  </body>
-  </html>
+<?php require_once("footer.php"); ?>

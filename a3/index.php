@@ -11,6 +11,9 @@
     <a href="postletters.php">Letters & Post Cards</a>
     <a href="action-description.php">Action Description</a>
     <a href="contact.php">Contact</a>
+    <?php if (isset($_SESSION['user'])): ?>
+      <a href="edit-letters.php"> Edit Letters(secret page)</a>
+    <?php endif; ?>
   </div>
 
 </nav>
@@ -226,4 +229,4 @@
       </p>
     </section>
 </main>
-    <?php require_once("footer.php"); ?>
+<?php require_once("footer.php"); ?>

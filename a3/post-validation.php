@@ -3,7 +3,8 @@
 $name = $email = $number = $message = $subject = "";
 $nameError = $emailError = $numberError = $subjectError = $messageError = $logError = "";
 $regexPatt = "/^(([A-Za-z]+[,.]?[ ]?|[a-z]+['-]?)+)$/i";
-$numRegex = "/^(?:\+\D*6\D*1(?:\s)?)?\D*0(\D*\d){9}\D*$/";
+$numRegex = "/^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ]
+            (?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$/";
 $errCheck = TRUE;
 
 session_start();
@@ -16,21 +17,21 @@ if (isset($_POST["login"])) {
 function login() {
   $correctUsername = "IanBBB";
   $correctPassword = "p4ssw0rd";
-  $username = htmlspecialchars($_POST['username']);
-  $password = htmlspecialchars($_POST['password']);
+  $username = trim_input($_POST['username']);
+  $password = trim_input($_POST['password']);
   if (isset($_SESSION['user'])) {
     unset($_SESSION['user']);
-  } else if (!empty($username)) {
+  } else if (!empty($username) && !empty($password)) {
     setcookie("username", $username, time() + 30);
     if($username == $correctUsername && $password == $correctPassword) {
       $logError = "";
       $_SESSION['user'] = $username;
       $_SESSION['loggedin'] = TRUE;
-    } else if(empty($username) || empty($password)) {
-      $_SESSION['error'] = "Details must not be empty.";
-    }else {
+    } else {
       $_SESSION['error'] = "That account does not exist.";
     }
+  }else if(empty($username) || empty($password)) {
+    $_SESSION['error'] = "Details must not be empty.";
   }
   header('Location: '.$_SERVER['HTTP_REFERER']);
   exit();
@@ -60,6 +61,8 @@ if (isset($_POST["submit"])) {
   }
 
   $number = trim_input($_POST["number"]);
+  /* remove spaces */
+  $number = str_replace(' ', '', $number);
   if (!preg_match($numRegex, $number) && !empty($_POST["number"])) {
     $numberError = "Invalid number.";
     $errCheck = FALSE;
